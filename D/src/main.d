@@ -1,8 +1,9 @@
-module src.main; // Declaración correcta del módulo
+module src.main;
 
 import std.stdio;
 import src.Shape;
 import src.Rectangle;
+import src.RectangleDerived;
 import src.Circle;
 import std.exception;
 
@@ -17,33 +18,49 @@ void main() {
     auto circ = new Circle(7);
     writeln("Área del Círculo: ", circ.area());
 
-    // Prueba de precondiciones fallidas
+    // Prueba de precondiciones fallidas en constructor
     try {
         auto invalidRect = new Rectangle(-3, 10);
-    } catch (Error e) {
-        writeln("Error al crear Rectángulo: ", e.msg);
+    } catch (Throwable e) { // Capturar Throwable para mensajes detallados
+        writeln("Error al crear Rectángulo: ", e.toString());
     }
 
     try {
         auto invalidCirc = new Circle(-5);
-    } catch (Error e) {
-        writeln("Error al crear Círculo: ", e.msg);
+    } catch (Throwable e) {
+        writeln("Error al crear Círculo: ", e.toString());
     }
 
-    // Prueba de método con precondición
+    // Prueba de método setDimensions con precondiciones fallidas
     try {
         rect.setDimensions(15, -2);
-    } catch (Error e) {
-        writeln("Error al actualizar dimensiones del Rectángulo: ", e.msg);
+    } catch (Throwable e) {
+        writeln("Error al actualizar dimensiones del Rectángulo: ", e.toString());
     }
 
-    // Prueba de herencia y redefinición de métodos
+    // Creación de RectangleDerived válido
     auto derivedRect = new RectangleDerived(4, 8);
     writeln("Área del Rectángulo Derivado: ", derivedRect.area());
 
+    // Prueba de setDimensions en RectangleDerived con precondiciones fallidas
     try {
         derivedRect.setDimensions(-4, 8); // Debería fallar precondición
-    } catch (Error e) {
-        writeln("Error al actualizar dimensiones del Rectángulo Derivado: ", e.msg);
+    } catch (Throwable e) {
+        writeln("Error al actualizar dimensiones del Rectángulo Derivado: ", e.toString());
+    }
+
+    // Prueba de move en Rectangle (sin precondiciones)
+    writeln("Moviendo Rectángulo sin precondiciones:");
+    rect.move(5, 5); // Debería pasar
+
+    // Prueba de move en RectangleDerived con precondiciones
+    writeln("Moviendo RectangleDerived con parámetros válidos:");
+    derivedRect.move(5, 5); // Debería pasar
+
+    writeln("Moviendo RectangleDerived con parámetros inválidos:");
+    try {
+        derivedRect.move(15, 15); // Debería fallar precondición
+    } catch (Throwable e) {
+        writeln("Error al mover RectangleDerived: ", e.toString());
     }
 }

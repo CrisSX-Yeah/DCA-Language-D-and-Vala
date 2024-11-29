@@ -1,4 +1,6 @@
-module src.Shape; // Declaración correcta del módulo
+module src.Shape;
+
+import std.stdio; // Para usar writeln en el método move
 
 abstract class Shape {
     // Constructor
@@ -10,6 +12,12 @@ abstract class Shape {
     // Propiedad para obtener el área
     public double area() {
         return getArea();
+    }
+
+    // Método move sin precondiciones
+    public void move(int deltaX, int deltaY) {
+        // Implementación base: simplemente imprime el movimiento
+        writeln("Shape moved by (", deltaX, ", ", deltaY, ")");
     }
 
     // Invariante de clase (vacío en clase abstracta)

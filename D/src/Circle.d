@@ -10,21 +10,19 @@ class Circle : Shape {
     // Constructor con precondiciones y postcondiciones
     this(double radius)
     in (radius > 0)
-    out {
-        assert(this.radius > 0, "Postcondición: radius establecido correctamente.");
-    }
     do {
         this.radius = radius;
+        // Postcondición dentro del cuerpo de la función
+        assert(this.radius > 0, "Postcondición: radius establecido correctamente.");
     }
 
     // Método para establecer el radio con precondiciones y postcondiciones
     void setRadius(double newRadius)
     in (newRadius > 0)
-    out {
-        assert(this.radius > 0, "Postcondición: radius actualizado correctamente.");
-    }
     do {
         this.radius = newRadius;
+        // Postcondición dentro del cuerpo de la función
+        assert(this.radius > 0, "Postcondición: radius actualizado correctamente.");
     }
 
     // Implementación del método abstracto
