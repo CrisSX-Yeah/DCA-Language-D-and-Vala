@@ -9,16 +9,21 @@ abstract class Shape {
     // Método abstracto para calcular el área
     public abstract double getArea();
 
+    public abstract double getAreaLessThan50000();
+
     // Propiedad para obtener el área
     public double area() {
         return getArea();
     }
 
+    public double areaLessThan50000() 
+    out (result; result >= 0 && result <= 5000, "Postcondición: El área debe estar entre 0 y 5000.") {
+        return getAreaLessThan50000();
+    }
+
     // Método move con precondiciones
     public void move(int deltaX, int deltaY)
-    in (deltaX != 0 || deltaY != 0)
-    do {
-        // Implementación base: simplemente imprime el movimiento
+    in (deltaX != 0 || deltaY != 0) { // Precondición
         writeln("Shape moved by (", deltaX, ", ", deltaY, ")");
     }
 

@@ -7,32 +7,31 @@ class Rectangle : Shape {
     protected int width;  // Protegido para permitir acceso en clases derivadas
     protected int height;
 
-    // Constructor con precondiciones
+    // Constructor con precondiciones y postcondiciones
     this(int width, int height)
     in (width > 0 && height > 0)
-    do {
+    out (; this.width > 0 && this.height > 0, "Postcondición: dimensiones establecidas correctamente.") {
         this.width = width;
         this.height = height;
-        // Postcondición dentro del cuerpo de la función
-        assert(this.width > 0 && this.height > 0, "Postcondición: dimensiones establecidas correctamente.");
     }
 
-    // Método para establecer dimensiones con precondiciones
+    // Método para establecer dimensiones con precondiciones y postcondiciones
     void setDimensions(int newWidth, int newHeight)
     in (newWidth > 0 && newHeight > 0)
-    do {
+    out (; this.width == newWidth && this.height == newHeight, "Postcondición: dimensiones actualizadas correctamente.") {
         this.width = newWidth;
         this.height = newHeight;
-        // Postcondición dentro del cuerpo de la función
-        assert(this.width > 0 && this.height > 0, "Postcondición: dimensiones actualizadas correctamente.");
     }
 
     // Implementación del método abstracto
-    override public double getArea()
-    out (result; result >= 0 && result <= 5000, "Postcondición: El área debe estar entre 0 y 5000.") {
+    override public double getArea() {
         return cast(double)(width * height);
     }
 
+    override public double getAreaLessThan50000()
+    out (result; result >= 0 && result <= 50000, "Postcondición: El área debe estar entre 0 y 50000.")  {
+        return cast(double)(width * height);
+    }
 
     // Invariante de clase
     invariant {
