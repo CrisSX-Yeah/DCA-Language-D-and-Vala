@@ -26,9 +26,11 @@ class Circle : Shape {
     }
 
     // Implementación del método abstracto
-    override public double getArea() {
+    override public double getArea()
+    out (result; result >= 0 && result <= 50000, "Postcondición: El área debe estar entre 0 y 50000.") {
         return PI * radius * radius;
     }
+
 
     // Invariante de clase
     invariant {

@@ -28,9 +28,11 @@ class Rectangle : Shape {
     }
 
     // Implementación del método abstracto
-    override public double getArea() {
+    override public double getArea()
+    out (result; result >= 0 && result <= 5000, "Postcondición: El área debe estar entre 0 y 5000.") {
         return cast(double)(width * height);
     }
+
 
     // Invariante de clase
     invariant {
