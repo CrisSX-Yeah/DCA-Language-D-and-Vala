@@ -49,11 +49,11 @@ void main() {
         writeln("Error al actualizar dimensiones del Rectángulo Derivado: ", e.toString());
     }
 
-    // Prueba de move en Rectangle (sin precondiciones)
-    writeln("Moviendo Rectángulo sin precondiciones:");
+    // Prueba de move en Rectangle (sin precondiciones adicionales)
+    writeln("Moviendo Rectángulo sin precondiciones adicionales:");
     rect.move(5, 5); // Debería pasar
 
-    // Prueba de move en RectangleDerived con precondiciones
+    // Prueba de move en RectangleDerived con precondiciones adicionales
     writeln("Moviendo RectangleDerived con parámetros válidos:");
     derivedRect.move(5, 5); // Debería pasar
 

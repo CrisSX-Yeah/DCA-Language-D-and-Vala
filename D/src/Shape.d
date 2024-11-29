@@ -14,8 +14,10 @@ abstract class Shape {
         return getArea();
     }
 
-    // Método move sin precondiciones
-    public void move(int deltaX, int deltaY) {
+    // Método move con precondiciones
+    public void move(int deltaX, int deltaY)
+    in (deltaX != 0 || deltaY != 0)
+    do {
         // Implementación base: simplemente imprime el movimiento
         writeln("Shape moved by (", deltaX, ", ", deltaY, ")");
     }
