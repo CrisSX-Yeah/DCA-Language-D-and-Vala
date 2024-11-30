@@ -164,13 +164,14 @@ void main() {
     rect.move(15, 15); // Debería pasar
     writeln("OK.");
 
-    // Prueba de move en RectangleDerived con precondiciones adicionales
-    writeln("MovER RectangleDerived con parámetros válidos debería de dar OK:");
-    derivedRect.move(5, 5); // Debería pasar
+    // Prueba de move en RectangleDerived con precondiciones adicionales con respecto a la clase padre válidas
+    writeln("Mover RectangleDerived con parámetros válidos debería de dar OK:");
+    derivedRect.move(5, 5); 
     writeln("OK.");
 
+    // Prueba de move en RectangleDerived con precondiciones adicionales con respecto a la clase padre inválidas
     writeln("Moviendo RectangleDerived debería de ignorar las restricciones más estrictas para no incumplir el principio de Sustitución de Liskov:");
-    derivedRect.move(150, 150); // Debería fallar precondición
+    derivedRect.move(150, 150);
     writeln("OK. Las precondiciones extras se ignoran debido a que están añadiendo restricciones más estrictas que las establecidad en la clase padre. Así se evita incumplir el principio de sustitución de Liskov. ");
     
 }
