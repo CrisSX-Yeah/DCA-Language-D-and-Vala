@@ -1,5 +1,3 @@
-// src/Rectangle.vala
-
 public class Rectangle : Shape {
     protected int width;
     protected int height;
@@ -21,12 +19,12 @@ public class Rectangle : Shape {
     }
 
     // Implementación del método abstracto para calcular el área
-    public override double get_area() {
+    public override double calculate_area() {
         return (double)(width * height);
     }
 
     // Implementación del método abstracto para áreas menores a 50000
-    public override double get_area_less_than_50000()
+    public override double calculate_area_below_50000()
         ensures (result >= 0.0 && result <= 50000.0) {
         return (double)(width * height);
     }

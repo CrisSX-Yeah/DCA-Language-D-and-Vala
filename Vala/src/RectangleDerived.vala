@@ -1,5 +1,3 @@
-// src/RectangleDerived.vala
-
 public class RectangleDerived : Rectangle {
     // Constructor con precondiciones y postcondiciones
     public RectangleDerived(int width, int height)

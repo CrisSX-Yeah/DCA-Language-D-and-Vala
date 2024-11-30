@@ -1,27 +1,25 @@
-// src/Shape.vala
-
 public abstract class Shape {
     // Constructor protegido para clases derivadas
     protected Shape() { }
 
     // Método abstracto para calcular el área
-    public abstract double get_area();
+    public abstract double calculate_area();
 
     // Método abstracto para obtener áreas menores a 50000
-    public abstract double get_area_less_than_50000()
+    public abstract double calculate_area_below_50000()
         ensures (result >= 0.0 && result <= 50000.0);
 
     // Propiedad para obtener el área
     public double area {
         get {
-            return get_area();
+            return calculate_area();
         }
     }
 
     // Propiedad para obtener el área menos de 50000
-    public double area_less_than_50000 {
+    public double area_below_50000 {
         get {
-            return get_area_less_than_50000();
+            return calculate_area_below_50000();
         }
     }
 
